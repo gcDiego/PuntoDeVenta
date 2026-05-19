@@ -24,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             );
             $stmt->execute([$nombre, $precio_venta, $stock, $categoria_id]);
 
-            // Redirigir a la lista de productos
             header('Location: products.php');
             exit;
         } catch (PDOException $e) {

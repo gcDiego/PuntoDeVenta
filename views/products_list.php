@@ -1,24 +1,26 @@
-<h1>Product List</h1>
+<h1>Lista de Productos</h1>
 
 <?php if (empty($products)): ?>
-    <p>No products found.</p>
+    <p>No se encontraron productos.</p>
 <?php else: ?>
     <table border="1" style="width:100%; border-collapse: collapse;">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Price</th>
+                <th>Nombre</th>
+                <th>Precio</th>
                 <th>Stock</th>
-                <th>Category</th>
+                <th>Categoría</th>
+                <th>Estado</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($products as $product): ?>
-                <tr>
+                <tr style="<?= ($product['bajo_minimo']) ? 'background-color: #ffcccc;' : '' ?>">
                     <td><?= htmlspecialchars($product['nombre']) ?></td>
                     <td>$<?= number_format($product['precio_venta'], 2) ?></td>
-                    <td><?= htmlspecialchars($product['stock']) ?></td>
-                    <td><?= htmlspecialchars($product['categoria_nombre']) ?></td>
+                    <td><?= htmlspecialchars($product['stock_actual']) ?></td>
+                    <td><?= htmlspecialchars($product['categoria']) ?></td>
+                    <td><?= ($product['bajo_minimo']) ? 'Bajo Mínimo' : 'OK' ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
